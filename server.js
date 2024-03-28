@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const router =  express.Router();
 
+const cors = require('cors')
+app.use(cors())
 
 const dbConfig ={
     user: 'sa',
@@ -30,7 +32,7 @@ router.get("/item", (req,res)=>{
         //create request object
 
         const request = new sql.Request();
-        const selectQuery = "Select top 10 * from Item"
+        const selectQuery = "Select top 20 * from Item"
         request.query(selectQuery, (err,data)=>{
             if(err){
                 throw err;
